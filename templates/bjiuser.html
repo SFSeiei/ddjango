@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index/add_user" method="post">
+    <label for="username">用户名：</label>
+    <input id="username" name="username" placeholder="请输入用户名！">
+    <!-- id-->
+    <label for="password">密码：</label>
+    <input id="password" name="password" placeholder="请输入密码！">
+    <br>
+    邮箱：<input id="email" name="email" placeholder="请输入邮箱！">
+    姓名：<input id="name" name="name" placeholder="请输入姓名！">
+    <br>
+    <input type="submit">
+</form>
+<a href="/index">跳转1</a>
+<a href="{% url 'index:login1' %}">跳转2</a>
+<a href="{% url 'index:url_param' id="123" %}">url_param跳转</a>
+<a href="{% url 'index:request_param' %}?username=sdf">url_param跳转</a>
+{% load staticfiles %}
+{#<img src="{% static 'index/a.jpg' %}">#}
+{#<img src="{% static 'login/a.jpg' %}">#}
+
+{% load my_filter %}
+<p>{{ 5|mul:4 }}</p>
+{% if user_list %}
+    <table>
+        {% for row in user_list reversed %}
+            <tr>
+                <td>{{ row.username }}</td>
+                <td>{{ row.email }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.password }}</td>
+                <td>|</td>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ forloop.counter0 }}</td>
+                <td>{{ forloop.recounter }}</td>
+                <td>{{ forloop.recounter0 }}</td>
+                <td>{{ forloop.first }}</td>
+                <td>{{ forloop.last }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{#<table>#}
+{#    <tr>#}
+{#        <td>{{ username }}</td>#}
+{#        <td>{{ email }}</td>#}
+{#        <td>{{ username }}</td>#}
+{#        <td>{{ username }}</td>#}
+{#    </tr>#}
+{#</table>#}
+</body>
+</html>

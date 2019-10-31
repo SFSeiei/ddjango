@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .inputW {
+        width: 200px;
+    }
+</style>
+<body>
+<input class="inputW" id="usernameInput" type="text" placeholder="请输入用户名"/>
+<input class="inputW" id="nameInput" type="text" placeholder="请输入名字"/>
+<input class="inputW" id="pwdInput" type="text" placeholder="请输入密码"/>
+<input class="inputW" id="emailInput" type="text" placeholder="请输入邮箱"/>
+<input id="subButton" type="button" value="添加">
+</body>
+<script src="./static/jquery/jquery-3.2.1.min.js"></script>
+<script>
+    $("#subButton").click(function () {
+        var data = {
+            "username": $('#usernameInput').val(),
+            "name": $('#nameInput').val(),
+            "password": $('#pwdInput').val(),
+            "email": $('#emailInput').val()
+        };
+        $.post('http://127.0.0.1:8000/index/add_user', data, function (data, status) {
+            console.log(status);
+            console.log(data);
+        })
+    })
+</script>
+</html>

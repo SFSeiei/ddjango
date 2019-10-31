@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="butto" type="button" name="aaa" value="点我">
+</body>
+<script type="text/javascript" src="./static/jquery/jquery-3.2.1.min.js"></script>
+<script>
+    $("#butto").click(function () {
+        var data = {"name": "tom", "age": 14};
+        $.get('http://127.0.0.1:8000/index/file/', data, function (data, status) {
+            console.log(status);
+            console.log(data);
+        })
+    })
+</script>
+</html>
